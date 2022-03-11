@@ -1,0 +1,9 @@
+Steps for Creating escrow dApp
+
+1. Develop Escrow Smart Contract
+
+2. Deploy and Test Smart contract using remix
+
+3. implement frontend using react 
+
+4. 
