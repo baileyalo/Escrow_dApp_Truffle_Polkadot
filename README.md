@@ -8,11 +8,13 @@ cd backend
 //compile contract
 
 
-![truffle compil](https://user-images.githubusercontent.com/90293555/158036340-a4299f65-bc00-424d-a0f9-cbc076032f73.jpg)
+
 
 2. truffle migrate run --network moonbase 
 //deploy contract to testnet
 ```
+
+![truffle compil](https://user-images.githubusercontent.com/90293555/158036340-a4299f65-bc00-424d-a0f9-cbc076032f73.jpg)
 ### Testnet:
 
 
