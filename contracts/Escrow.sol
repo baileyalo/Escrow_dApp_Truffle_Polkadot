@@ -24,7 +24,7 @@ contract Escrow {
         //  All funds need to be received before it can be released
         require(address(this).balance == amount, "cannot release money before the full amount was sent");
         require(msg.sender == arbiter, "Only arbiter can release funds");
-        seller.transfer(amount);
+        seller.transfer(address(this).balance);
     }
     function balanceOf() public view returns(uint) {
         return address(this).balance;
