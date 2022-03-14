@@ -20,7 +20,7 @@ contract('Escrow', accounts => {
     it('Should deposit', async () => {
         await escrow.deposit({ from: buyer, value: 900 })
         
-        // check balance of ether in smart contract is equal to 900 wei
+      
         const escrowBalance = parseInt(await web3.eth.getBalance(escrow.address));
         assert(escrowBalance === 900)
     });
