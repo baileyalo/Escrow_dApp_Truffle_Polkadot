@@ -19,6 +19,7 @@
  */
 
  const HDWalletProvider = require('@truffle/hdwallet-provider');
+ require ('dotenv').config();
 //
 // const fs = require('fs');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
@@ -61,7 +62,8 @@ module.exports = {
     
 
      moonbase: {
-     provider: () => new HDWalletProvider('e231091d3a3f4573486c566f787547ae4182e90eaf5fa086f6c7a089d9f85553',  // Insert your private key here
+     provider: () => 
+     new HDWalletProvider(process.env.MNEMONIC,  // Insert your private key here
       'https://rpc.testnet.moonbeam.network' // Insert your RPC URL here
     ),
      network_id: 1287, 

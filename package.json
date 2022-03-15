@@ -7,7 +7,9 @@
     "test": "test"
   },
   "dependencies": {
+    "@truffle/hdwallet-provider": "^2.0.4",
     "assert": "^2.0.0",
+    "dotenv": "^16.0.0",
     "fs": "0.0.1-security",
     "https-browserify": "^1.0.0",
     "install": "^0.13.0",
