@@ -1,36 +1,41 @@
 import React, { Component } from 'react';
-import  {getWeb3} from './utils';
+import getWeb3 from "./utils";
 import './App.css';
 import Escrow from './Escrow.json';
 
 
 
+
 class App extends Component {
   state = {
-    web3: '',
+    web3: null,
     accounts: [],
-    currentAccount: '',
-    contract: '',
-    balance: ''
+    currentAccount: null,
+    contract: null,
+    balance: null,
+   
   }
 
   async componentDidMount() {
-    const web3 = await getWeb3();
+    let web3 = await getWeb3();
+
+
     const accounts = await web3.eth.getAccounts();
 
     const networkId =  await web3.eth.net.getId();
     const deployedNetwork = await Escrow.networks[networkId];
-    const contract = new web3.eth.Contract(
+    const instance = new web3.eth.Contract(
       Escrow.abi,
      deployedNetwork && deployedNetwork.address
     )
-    this.setState({ web3, accounts, contract}, this.update())
+    this.setState({ web3, accounts, contract: instance }, this.update())
   }
 
   async update() {
-    const { contract } = this.state;
+    const {  contract } = this.state;
+    
     const balance = await contract.methods.balanceOf().call();
-    console.log (balance);
+  
     this.setState({ balance });
   }
 
@@ -62,7 +67,7 @@ class App extends Component {
        <h1> Escrow</h1>
   
        <div>
-         <p> Balance:   <b>{balance}</b>wei</p>
+         <p> Balance:   <b>{balance}</b>DEV</p>
        </div>
         <div>
           <form onSubmit={e => this.deposit(e)}>
@@ -70,12 +75,12 @@ class App extends Component {
             <label> Deposit</label>
             <input type="number" placeholder="Deposit"></input>
             </div>
-            {/* button for form */}
+            
             <button type="submit">Submit</button>
           </form>
         </div>
         <div>
-          {/* button to release funds */}
+        
           <button onClick={e => this.release(e)} type="submit">Release</button>
         </div>
       </div>
